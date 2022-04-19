@@ -1,0 +1,95 @@
+\documentclass[12pt,a4paper,oneside,onecolumn]{article}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{mathabx}  Compila pero borra el pdf?
+\usepackage{array}
+\usepackage[left=1.8cm, right=1.8cm, top=2.50cm, bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+
+\setlength{\headsep}{0.4cm}
+\setlength{\footskip}{1.6pt}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1.5pt}
+
+
+\lhead{An\'alisis Matem\'atico I}
+\rhead{Javier Orti}
+\renewcommand*\headrulewidth{0.4 pt}
+\lfoot{\vspace{0.45cm}Pr\'actica 4}
+\cfoot{\vspace{0.01cm}\rule{\linewidth}{0.4pt}}
+\rfoot{\vspace{0.45cm} P\'ag. \thepage}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand\spanishtablename{Tabla}
+
+\decimalpoint
+
+\headheight 16.7pt 
+\textheight 715pt 
+
+\parskip 8pt  
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+% Python code settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{cancel}
+
+\begin{document} 
+    \[
+        \sigma_{territory = "EMEA" \land City \neq "London"}(\text{office})
+    \]
+    \[
+        \Pi_{city, country, office\_code}( \sigma_{territory = "EMEA" \land City \neq "London"}(\text{office}))
+    \]
+    \[
+        \rho_{EUoffice} (\Pi_{city, country, office\_code}( \sigma_{territory = "EMEA" \land City \neq "London"}(\text{office})))
+    \]
+	
+\end{document}

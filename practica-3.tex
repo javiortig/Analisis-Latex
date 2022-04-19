@@ -1,0 +1,226 @@
+\documentclass[12pt,a4paper,oneside,onecolumn]{article}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{mathabx}  Compila pero borra el pdf?
+\usepackage{array}
+\usepackage[left=1.8cm, right=1.8cm, top=2.50cm, bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+
+\setlength{\headsep}{0.4cm}
+\setlength{\footskip}{1.6pt}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1.5pt}
+
+
+\lhead{An\'alisis Matem\'atico I}
+\rhead{Javier Orti}
+\renewcommand*\headrulewidth{0.4 pt}
+\lfoot{\vspace{0.45cm}Pr\'actica 3}
+\cfoot{\vspace{0.01cm}\rule{\linewidth}{0.4pt}}
+\rfoot{\vspace{0.45cm} P\'ag. \thepage}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand\spanishtablename{Tabla}
+
+\decimalpoint
+
+\headheight 16.7pt 
+\textheight 715pt 
+
+\parskip 8pt  
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+% Python code settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{cancel}
+
+\begin{document} 
+    % Ejercicio 1 %
+    \section{}
+    \[
+        \{f_n\} \text{ con t\'ermino general:  } f_n = ne^{-nx^2} 
+    \]
+    Si la sucesi\'on $\{f_n\}$ converge uniformemente a $f $ en $A\subset R$ y cada $f_n$ es continua en A, entonces f es integrable y 
+    \[
+        \text{i)}\int_{a}^{b}{f(x) dx} = \lim_{n\to\infty}{ \int_{a}^{b}{f_n(x) dx}}
+    \]
+    
+    Primero comprobamos si converge puntualmente, ya que es condici\'on necesaria para que sea uniforme
+    \[
+        L = \lim_{n\to\infty}\frac{nx}{e^{nx^2}} = 0
+    \]
+    Por lo tanto, $\{f_n\}$ converge puntualmente a  $f(x) = 0$.
+    Comprobamos por \'ltimo si se mantiene la igualdad i) :
+    \[
+        c = \int_{0}^{1}{f(x) dx} = \int_{0}^{1}{0 dx} = 0
+    \]
+    \[
+        d = \lim_{n\to\infty}\int_{0}^{1}{e^{nx^2} dx} = \lim_{n\to\infty}[-\frac{1}{2}e^{-nx^2}]^1_0 = \lim_{n\to\infty}\frac{1}{2}(1-e^{-n}) = \frac{1}{2}
+    \]
+    Como $c\ne d \rightarrow \{f_n\}$ no puede ser uniformemente convergente en $[0, 1]$
+    
+    % Ejercicio 2 %
+    \section{}
+    \[
+        f_n = \frac{2nx}{1+nx}-1
+    \]
+    Calculamos $f(x)$:
+    \[
+        \begin{cases}
+        \begin{aligned}
+            \lim_{n\to\infty}\frac{2nx}{1+nx}-1 = 1 \text{  si  } x\ne 0 \\
+            \text{ }\lim_{n\to\infty}\frac{2nx}{1+nx}-1 = -1 \text{  si  } x=0
+        \end{aligned}
+        \end{cases}
+    \]
+    Como $0\notin [1,+\infty)$, con este resultado podemos afirmar que la funci\'on converge uniformemente en ese intervalo ya que se formar\'a una regi\'on alrededor de $y=1$.
+    Sin embargo, en $x\in[0, 1]$ y especialmente para $x=0$:
+    \[
+        \lim_{n\to\infty}\sup_{x \in [0,1]}\left\{\left|\frac{2nx}{1+nx}-1\right|\right\} 
+    \]
+    y vemos que si sustituimos $x=0$, obtenemos $|-1| = 1 > 0$, por lo tanto el supremo ser\'a mayor a 0 y la sucesi\'on no es uniforme en ese intervalo. Si el intervalo fuese abierto por la izquierda, entonces s\'i ser\'ia uniforme
+    
+    % Ejercicio 3 %
+    \section{}
+    \[
+    S_n(x) = \sum_{n=0}^{\infty}{\frac{(x-2)^n}{(n+1)3^n}}
+    \]
+    Al ser una serie de potencias, podemos sospechar que el campo de convergencia se encontrará en $|x-2|<3$. Comprobemos:
+    
+    \[
+    f_{n} = \frac{(x-2)^n}{(n+1)3^n}
+    \]
+    \[
+    f_{n+1} = \frac{(x-2)^{n+1}}{(n+2)3^{n+1}}
+    \]
+    \[
+        \lim_{n\to\infty}{\left| \frac{f_{n+1}}{f_n} \right|} =\lim_{n\to\infty}{\left| \frac{(x-2)^n}{(n+1)3^n} \div \frac{(x-2)^{n+1}}{(n+2)3^{n+1}}  \right|} =
+    \]
+    \[
+        \left|\frac{1}{x-2}\right|\lim_{n\to\infty}{\left|\frac{3(n+2)}{n+1}\right|} = \left|\frac{3}{x-2}\right| < 1
+    \]
+    Resolvemos la inecuaci\'on para comprobar que valores est\'an entre -1 y 1. Para ello el denominador debe situarse entre -3 y 3:
+    \[
+    -3 < x-2 < 3 \rightarrow -1 < x < 5
+    \]
+    Por lo que el radio de convergencia ser\'a 3 en $x_0 = 2$ y su campo ser\'a al menos $(-1, 5)$. Ahora comprobamos si incluir los extremos:
+    \newline a) Para $x = 5$:
+    \[
+        \sum_{n=0}^{\infty}{\frac{(3)^n}{(n+1)3^n}} = \sum_{n=1}^{\infty}{\frac{1}{n}}
+    \]
+    Se trata de la famosa serie arm\'onica, por lo que sabemos que diverge.
+    \newline b) Para $x = -1$
+    \[
+        \sum_{n=0}^{\infty}{\frac{(-3)^n}{(n+1)3^n}} = 1 -1/2 +1/3 -1/4... =
+    \]
+    \[
+        \sum_{n=1}^{\infty}{\frac{x^n}{n}} \text{   si   } x = -1
+    \]
+    Como sabemos que esta famosa serie es $-ln|1-x|$ pero con los signos cambiados, nuestra serie converger\'a a $-(-ln|1-(-1)|) = ln(2)$.
+    \newline \newline
+    Sabiendo que converge puntualmente en $x = -1$, afirmamos nuevamente que su radio de convergencia ser\'a 3 en $x_0 = 2$ y su campo de convergencia [-1, 5).
+    \newpage
+    
+    % Ejercicio 4 %
+    \section{}
+    
+    \[
+        f_n = a_n x^n \text{ con } R\in \mathbb{R} \text{ y } m \in \mathbb{N}
+    \]
+    \[
+        f_{n+1} =a_{n+1}x^{n+1}
+    \]
+    Nos basaremos en la definici\'on de radio de convergencia para hallar los apartados a continuaci\'on. Como $x_0 = 0$, ya sabemos que el centro del campo de convergencia se encuentra en $x_0$ y por tanto los extremos del campo ser\'an el radio de convergencia que llamaremos $R$
+    \[
+        \lim_{n\to\infty}{\frac{|a_{n+1}x^{n+1}|}{|a_n x^n|}} = \lim_{n\to\infty}{\sqrt[n]{|a_nx^n|}} = |x|\lim_{n\to\infty}{\frac{|a_{n+1}|}{|a_n|}} = |x|\lim_{n\to\infty}{\sqrt[n]{|a_n|}} < 1
+    \]
+    \[
+        |x| < \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}}
+    \]
+    \[
+        \frac{-1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}} < x < \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}}
+    \]
+    y como ya hemos dicho que el campo de convergencia tiene la forma $(-R, R)$ (no sabemos si el intervalo es cerrado o abierto, pero no es relevante) podemos afirmar que R ser\'a:
+    \[
+        R = \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}} = \frac{1}{\lim_{n\to\infty}\frac{|a_{n+1}|}{|a_n|}}
+    \]
+    
+    \begin{enumerate}[a)]
+        \item
+        \[
+            R_a = \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|(a_n)^m|}}} =  \frac{1^m}{(\lim_{n\to\infty}{\sqrt[n]{|a_n|}})^m} = R^m
+        \]
+        \item
+        Como $\lim_{n\to\infty}{\sqrt[n]{|m|}} = 1 \rightarrow R_b = R$ ya que:
+        \[
+            R_b = \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n m|}}} = \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}\cancelto{1}{\sqrt[n]{m}}}} \;\; = R
+        \]
+        \item
+        \[
+            \lim_{n\to\infty}{\sqrt[n]{|a_n(x-m)^n|}} = \lim_{n\to\infty}{\sqrt[n]{|a_n|}\sqrt[n]{|x-m|^n}} =
+            |x-m|^n \cdot\lim_{n\to\infty}{\sqrt[n]{|a_n|}}<1
+        \]
+        Y utilizando el mismo m\'etodo que al principio del ejercicio, llegamos a la expresi\'on:
+        \[
+           |x - m| < \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}} \longrightarrow |x| < |R + m| \longrightarrow R_c = \pm R + m
+        \]
+        
+        \item
+        Recordemos que el valor absoluto para algo elevado a una expresi\'on par es redundante:
+        \[
+            \lim_{n\to\infty}{\sqrt[n]{|a_n x^{2n}|}} = \lim_{n\to\infty}{\sqrt[n]{|a_n}\sqrt[n]{x^{2n}}} = 
+            x^2 \cdot \lim_{n\to\infty}{\sqrt[n]{|a_n|}}< 1
+        \]
+        \[
+            x^2 < \frac{1}{\lim_{n\to\infty}{\sqrt[n]{|a_n|}}} \longrightarrow x^2 < R \longrightarrow x < \sqrt{R}
+        \]
+        Por lo que $R_d = \sqrt{R}$
+    \end{enumerate}
+\end{document}

@@ -1,0 +1,231 @@
+\documentclass[12pt,a4paper,oneside,onecolumn]{article}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{mathabx}  Compila pero borra el pdf?
+\usepackage{array}
+\usepackage[left=1.8cm, right=1.8cm, top=2.50cm, bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+
+\setlength{\headsep}{0.4cm}
+\setlength{\footskip}{1.6pt}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1.5pt}
+
+
+\lhead{An\'alisis Matem\'atico I}
+\rhead{Javier Orti}
+\renewcommand*\headrulewidth{0.4 pt}
+\lfoot{\vspace{0.45cm}Pr\'actica 1}
+\cfoot{\vspace{0.01cm}\rule{\linewidth}{0.4pt}}
+\rfoot{\vspace{0.45cm} P\'ag. \thepage}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand\spanishtablename{Tabla}
+
+\decimalpoint
+
+\headheight 16.7pt 
+\textheight 715pt 
+
+\parskip 8pt  
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+% Python code settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document} 
+	
+	\begin{center}
+		$\mbox{}$\\[2.0cm]
+		\LARGE{\textbf{Software matem\'atico aplicado a las funciones de variable real. Problemas}}\\[2.0cm]
+		
+	\end{center}	
+	
+	\section{}
+	
+	\[
+	\lim_{x \to \infty}(x -x^2\ln(1 + \frac{1}{x}))
+	\]
+	
+	Este l\'imite puede ser resuelto sustituyendo \(x=1/x\), con lo que obtenemos: \[
+	\lim_{y \to 0}\frac{y-ln(1+y)}{y^2}
+	\]
+	Y obten\'emos un l\'imite que puede ser resuelto con mayor facilidad:
+	
+	\vspace{0.3cm}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.25]{ex_1.png}
+		\caption{}
+		\label{fig:01}
+	\end{figure}
+	
+	\section{}
+	\[
+	\lim_{x \to 0}\frac{x\sin{(\sin{(x)}})-(\sin(x))^2}{x^6}
+	\]
+	Obtenemos mediante \href{https://www.wolframalpha.com/input/?i=lim+x-%3E0+%28%28x*sen%28sen%28x%29%29+-+sen%5E2%28x%29%29%2F%28x%5E6%29%29}{\underline{WolframAlpha}} \(1/18\)
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.35]{ex_2.png}
+		\caption{}
+		\label{fig:02}
+	\end{figure}
+
+	\section{}
+	\[
+	x^8+\frac{19}{2}x^7+\frac{355}{18}x^6+\frac{179}{18}x^5-\frac{59}{6}x^4-34x^3-\frac{710}{9}x^2-\frac{358}{9}x +\frac{70}{3} = 0
+	\]
+	Calculamos los \href{https://www.wolframalpha.com/input/?i=x%5E%288%29%2B%28%2819%29%2F%282%29%29+x%5E%287%29%2B%28%28355%29%2F%2818%29%29+x%5E%286%29%2B%28%28179%29%2F%2818%29%29+x%5E%285%29-%28%2859%29%2F%286%29%29+x%5E%284%29-34+x%5E%283%29-%28%28710%29%2F%289%29%29+x%5E%282%29-%28%28358%29%2F%289%29%29+x%2B%28%2870%29%2F%283%29%29}{\underline{cortes en el eje X}} tanto en el plano real como complejo
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.4]{ex_3b.png}
+		\caption{}
+		\label{fig:03}
+	\end{figure}
+
+	\section{}
+	Con el siguiente fragmento de c\'odigo:
+	\lstinputlisting[language=Python, caption=\ ]{1_ex4.py}
+	Obtenemos que: 
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.35]{ex_4.png}
+		\caption{}
+		\label{fig:04}
+	\end{figure}
+	
+	\section{}
+	\[
+	f(x) = x^6 - 8x^5 + 3x^3 - 16x^2 + 5
+	\]
+	Obtenemos los m\'aximos, m\'inimos y puntos de inflexi\'on mediante \href{https://www.geogebra.org/calculator}{\underline{Geogebra}}:
+	\newline \newline \newline \newline \newline \newline \newline \newline \newline 
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.3]{ex_5.png}
+		\caption{}
+		\label{fig:05}
+	\end{figure}
+
+	\section{}
+	Calculamos gr\'aficamente las as\'intotas:
+	\[
+		f(x) = \frac{x^3 - x^2 + 1}{x^4 - x^3 - x^2 + 1}
+	\]
+	Para las asíntotas verticales, igualamos el denominador a 0 obteniendo \(x = 1\) e \(x = 1.3247\).
+	\newline Al representar gr\'aficamente la funci\'on, comprobamos que tiene una as\'intota vertical en \(y = 0\)
+		 
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.22]{ex_6b.png}
+		\caption{}
+		\label{fig:06}
+	\end{figure}
+	
+	\section{}
+	\[
+		f(x) = \cos{(x)} + 2\sin{(x)}\text{, with } c = \pi/4
+	\]
+	Con el siguiente fragmento de c\'odigo:
+	\lstinputlisting[language=Python, caption=\ ]{1_ex7.py}
+	Y el output:
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.33]{ex_7.png}
+		\caption{}
+		\label{fig:07}
+	\end{figure}
+
+	\section{}
+	Resolvemos la integral mediante el siguiente fragmento con la librer\'ia \textit{sympy}
+	\[
+		\int_{0}^{\pi/4}{\ln{(\cos{(x)})}dx} = -0.0864137
+	\]
+	\lstinputlisting[language=Python, caption=\ ]{1_ex8.py}
+	
+	\section{}
+	resolvemos las siguientes integrales:
+	\[
+	\int_{2}^{10}{(\frac{1}{x} - \frac{3x^2 - 20}{3x^2 + 6x + 10})} = -2.25954
+	\]
+	\[
+	\int_{2}^{10}{|\frac{1}{x} - \frac{3x^2 - 20}{3x^2 + 6x + 10}|} = 3.26821
+	\]
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.4]{ex_9a.png}
+		\caption{}
+		\label{fig:08}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.6]{ex_9b.png}
+		\caption{}
+		\label{fig:09}
+	\end{figure}
+
+	\section{}
+	Determinamos el arco mediante la ecuaci\'on 
+	\[
+		L = \int_{a}^{b}\sqrt{1 + (f'(x))^2}
+	\]
+	y obtenemos con la calculadora gr\'afica:
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[scale=0.35]{ex_10.png}
+		\caption{}
+		\label{fig:10}
+	\end{figure}
+	\newline \newline 
+	y que la longitud es \(L = 3.0422965\)
+\end{document}
+
+

@@ -1,0 +1,157 @@
+\documentclass[12pt,a4paper,oneside,onecolumn]{article}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{mathabx}  Compila pero borra el pdf?
+\usepackage{array}
+\usepackage[left=1.8cm, right=1.8cm, top=2.50cm, bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+
+\setlength{\headsep}{0.4cm}
+\setlength{\footskip}{1.6pt}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1.5pt}
+
+
+\lhead{An\'alisis Matem\'atico I}
+\rhead{Javier Orti}
+\renewcommand*\headrulewidth{0.4 pt}
+\lfoot{\vspace{0.45cm}Pr\'actica 4}
+\cfoot{\vspace{0.01cm}\rule{\linewidth}{0.4pt}}
+\rfoot{\vspace{0.45cm} P\'ag. \thepage}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand\spanishtablename{Tabla}
+
+\decimalpoint
+
+\headheight 16.7pt 
+\textheight 715pt 
+
+\parskip 8pt  
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+% Python code settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{cancel}
+
+\begin{document} 
+     % Ejercicio 1 %
+    \section{}
+    a)
+    Demostramos algebr\'aicamente:
+    \[
+        |\vec{x} \times \vec{y}|^2 = |\vec{x}|^2 \cdot |\vec{y}|^2 - (\vec{x} \cdot \vec{y})^2 
+    \]
+    \[
+        \vec{x} = (a_1, a_2, a_3), \vec{y} = (b_1, b_2, b_3)
+    \]
+    \[
+        \vec{x} \times \vec{y} = (a_2b_3 - a_3b_2, a_3b_1 - a_1b_3,a_1b_2 - a_2b_1)
+    \]
+    \[
+        |\vec{x} \times \vec{y}|^2 = (a_2b_3 - a_3b_2)^2 + (a_3b_1 - a_1b_3)^2 + (a_1b_2 - a_2b_1)^2
+    \]
+    \[
+        |\vec{x}|^2 = a_1^2 + a_2^2 + a_3^2,    
+        |\vec{y}|^2 = b_1^2 + b_2^2 + b_3^2
+    \]
+    \[
+        (\vec{x} \cdot \vec{y})^2 = (a_1b_1 +a_2b_2 + a_3b_3)^2
+    \]
+    Desarrollamos
+    \[
+        |\vec{x}|^2 \cdot |\vec{y}|^2 = a_1^2b_1^2 + a_2^2b_1^2 + a_3^2b_1^2 + a_1^2b_2^2 + a_2^2b_2^2 + a_3^2b_1^2 + a_3^2b_1^2 + a_3^2b_2^2 + a_3^2b_3^2 
+    \]
+    \[
+        |\vec{x}|^2 \cdot |\vec{y}|^2 - (\vec{x} \cdot \vec{y})^2 = a_1^2b_1^2 + a_2^2b_1^2 + a_3^2b_1^2 + a_1^2b_2^2 + a_2^2b_2^2 + a_3^2b_1^2 + a_3^2b_1^2 + a_3^2b_2^2 + a_3^2b_3^2 -
+    \]
+    \[
+        - (a_1b_1 +a_2b_2 + a_3b_3)^2 = 
+    \]
+    \[
+        = a_2^2b_1^2 + a_3^2b_1^2 +a_1^2b_2^2 + a_3^2b_2^2 +a_1^2b_3^2 +a_2^2b_3^2 - 2a_1a_2b_2b_1 - 2a_1a_3b_3b_1 - 2a_2a_3b_2b_3
+    \]
+    Y comprobamos que est\'a tediosa expresi\'on coincide con $|\vec{x} \times \vec{y}|^2$:
+    
+    \[
+        |\vec{x} \times \vec{y}|^2 = (a_2b_3 - a_3b_2)^2 + (a_3b_1 - a_1b_3)^2 + (a_1b_2 - a_2b_1)^2 =
+    \]
+    \[
+        = a_2^2b_1^2 + a_3^2b_1^2 +a_1^2b_2^2 + a_3^2b_2^2 +a_1^2b_3^2 +a_2^2b_3^2 - 2a_1a_2b_2b_1 - 2a_1a_3b_3b_1 - 2a_2a_3b_2b_3
+    \]
+    Que si comprobamos t\'ermino a t\'ermino veremos que son iguales 
+    
+    b) Utilizando el resultado anterior, comprobamos:
+    \[
+        |\vec{x} \times \vec{y}| = |\vec{x}| \cdot |\vec{y}|\cdot |\sin{\theta}|
+    \]
+    Con la formula del coseno del angulo entre dos vectores, obtenemos que:
+    \[
+    |\vec{x}|^2 \cdot |\vec{y}|^2 - (\vec{x} \cdot \vec{y})^2 =  |\vec{x}|^2 \cdot |\vec{y}|^2 - (\vec{x}\vec{y}\cos{\theta})^2
+    \]
+    \[
+        |\vec{x}|^2 \cdot |\vec{y}|^2 (1 - \cos^2{\theta})
+    \]
+    Y como sabemos por Pit\'agoras que $(1 - \cos^2{\theta}) = \sin^2{\theta}$ y aplicando una raiz, llegamos a la expresion inicial:
+    \[
+        \sqrt{|\vec{x}|^2 \cdot |\vec{y}|^2 \sin^2{\theta}}  = |\vec{x}| \cdot |\vec{y}|\cdot |\sin{\theta}| = |\vec{x} \times \vec{y}|
+    \]
+    
+    % Ejercicio 2 %
+    \section{}
+    
+    % Ejercicio 3 %
+    \section{}
+    
+     % Ejercicio 4 %
+     \section{}
+     
+	
+\end{document}

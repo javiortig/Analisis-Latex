@@ -1,0 +1,190 @@
+\documentclass[12pt,a4paper,oneside,onecolumn]{article}
+
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{epsfig}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{mathabx}  Compila pero borra el pdf?
+\usepackage{array}
+\usepackage[left=1.8cm, right=1.8cm, top=2.50cm, bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+
+\setlength{\headsep}{0.4cm}
+\setlength{\footskip}{1.6pt}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1.5pt}
+
+
+\lhead{An\'alisis Matem\'atico I}
+\rhead{Javier Orti}
+\renewcommand*\headrulewidth{0.4 pt}
+\lfoot{\vspace{0.45cm}Pr\'actica 4}
+\cfoot{\vspace{0.01cm}\rule{\linewidth}{0.4pt}}
+\rfoot{\vspace{0.45cm} P\'ag. \thepage}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand\spanishtablename{Tabla}
+
+\decimalpoint
+
+\headheight 16.7pt 
+\textheight 715pt 
+
+\parskip 8pt  
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+% Python code settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage[shortlabels]{enumitem}
+\usepackage{cancel}
+
+\begin{document} 
+    % Ejercicio 1 %
+    \section{}
+    \[
+        \int_{1}^{\infty}{\frac{1}{x^2*\sqrt{\ln{x}}} dx}
+    \]
+    Aplicamos un cambio de variable $t=\ln{x}, x= e^t$ para poder expresar en funci\'on de Gamma:
+    \[
+        \int_{1}^{\infty}{\frac{e^t}{e^{t^2}\sqrt{t}} dt} = 
+        \int_{1}^{\infty}{e^-t \cdot t^{-1/2}} = \Gamma{(1/2)} = \sqrt{\pi}
+    \]
+     % Ejercicio 1 %
+    \section{}
+    \[
+        I = \int_{0}^{1}{\sqrt{1-x^4} dx}
+    \]
+    Aplicamos un cambio de variable $t=1-x^4, dt= -4x^3dx$ y despejamos para obtener $x^3=(1-t)^{3/4}$ para poder expresar en funci\'on de Beta:
+    \[
+        I = \frac{1}{4}\int_{0}^{1}{t^{1/2} \cdot x^{-3} dt} = \frac{1}{4}\int_{0}^{1}{t^{1/2} \cdot (1-t)^{-3/4} dt} = \beta{(3/2,1/4)}
+    \]
+    Expresamos por la propiedad como una funci\'on Gamma:
+    \[
+    I = \frac{1}{4} \cdot \frac{\Gamma{(3/2) \cdot \Gamma{(1/4)}}}{\Gamma{(7/4)}}
+    \]
+    Utilizamos dos veces la propiedad de la Gamma $\Gamma{(p)} = (p-1)\Gamma{(p-1)}$ y utilizamos el resultado del ejercicio anterior de $\Gamma{(1/2)} = \sqrt{\pi}$
+    \[
+    I = \frac{1}{4} \cdot \frac{\Gamma{(3/2) \cdot \Gamma{(1/4)}}}{\Gamma{(7/4)}} = 
+    \frac{1}{6} \cdot \frac{\sqrt{\pi} \cdot \Gamma{(1/4)}}{\Gamma{(3/4)}}
+    \]
+    Por \'ultimo, utilizamos la relaci\'on de reflexi\'on de Euler que dice as\'i:
+    \[
+        \Gamma{(z)}\Gamma{(1-z)} = \frac{\pi}{\sin{(\pi z)}}
+    \]
+    Despejando la Gamma, Obtenemos para nuestro caso:
+    \[
+        \Gamma{(3/4)} = \frac{\pi}{\Gamma{(1/4)} \cdot \sin{( \pi/4)}} = \frac{\pi}{\Gamma{(1/4)} \cdot \frac{1}{\sqrt{2}}}
+    \]
+    Y nos queda que nuestra integral:
+    \[
+        I = 
+    \frac{1}{6} \cdot \frac{\sqrt{\pi} \cdot \Gamma{(1/4)}}{\Gamma{(3/4)}} =
+    \frac{1}{6} \cdot \frac{\sqrt{\pi} \cdot \Gamma{(1/4)}}{\frac{\pi}{\Gamma{(1/4)} \cdot \frac{1}{\sqrt{2}}}} = 
+    \frac{1}{6} \cdot \frac{\Gamma^2{(1/4)}}{\sqrt{\pi}} \cdot \frac{1}{\sqrt{2}}
+    \]
+    Que es exactamente lo que nos ped\'ian demostrar.
+    % Ejercicio 3 %
+    \section{}
+    \[
+        \int_{2x}^{x^3}{5(x^2+t^3)^2}dt = [t^7/7 +0.5x^2t^4 +x^4t]^{x^3}_{2x} = \frac{1}{7}x^21 + \frac{35}{14}x^14 + \frac{47}{7}x^7 - 40x^6 -50x^5
+    \]
+    \[
+        F'(x) = 3x^{20} + 35x^{13} +47x^6 - 240x^5 -250x^4
+    \]
+    \[
+        \lim_{x \to 1}{F(x)} = F(1) = \frac{-1129}{14}
+    \]
+    
+    \begin{enumerate}[a)]
+    \item Comprobamos si se cumple la propiedad para el l\'imite:
+    \[
+        \int_{2}^{1}{5(1+t^3)^2}dt = -\int_{1}^{2}{5(1+t^3)^2}dt = -5[t^7/7 + 0.5t^4 + t]^2_1 = \frac{-1865}{14}
+    \]
+    Como se ve, el l\'imite no coincide.
+    \newline
+    \newline 
+    \item Comprobamos la propiedad de la derivada:
+    \[
+        \frac{\delta f(x, t)}{\delta x} = 20(x^3 + t^3x)
+    \]
+    \[
+        f(x^3, x)\cdot 3x^2 = 15x^2(x^6 +x^3)^2
+    \]
+    \[
+        f(2x, x)\cdot 2 = 10(x^3 + 4x^2)^2 
+    \]
+    
+    La derivada deber\'ia ser, por tanto:
+    \[
+        20\int_{2x}^{x^3}{(x^3 + t^3x)}dt  + f(x^3, x)\cdot 3x^2 - f(2x, x)\cdot 2 = 15x^14 + ... 
+    \]
+    $F'(x)$ no tiene ninguna inc\'ognita de grado 14 por lo que hemos comprobado que tampoco se cumple la propiedad
+    
+    
+    \end{enumerate}
+     % Ejercicio 4 %
+    \section{}
+    \[
+        I(t) =  \int_{0}^{\pi /2}{\frac{\arctan{(t\sin{x})}}{\sin{x}}}dx
+    \]
+    calculamos la derivada parcial para despuès obtener $I'(t)$:
+    \[
+        \frac{\delta f(x, t)}{\delta x} = \frac{1}{1 + (t\sin{x})^2}
+    \]
+    \[
+        I'(t) =  \int_{0}^{\pi /2}{\frac{1}{1 + (t\sin{x})^2}}dx
+    \]
+    Para integrar realizamos un cambio de variable:
+    \[
+        a = t\sin{x} \xrightarrow[]{} da = t\cos{x} \xrightarrow[]{} t\cos{x} = \sqrt{t - t\sin{x}} = \sqrt{t - a} 
+    \]
+    Y nos queda:
+    \[
+        I'(t) =  \int_{0}^{\pi /2}{\frac{1}{1 + (t\sin{x})^2}}dx
+    \]
+    
+    Se podr\'ia multiplicar por $1/\cos^2{x}$ e integrar por partes. Luego esa expresi\'on la integras para obtener $I(t)$, pero me he equivocado varias veces en el desarrollo y me da un resultado sin sentido, de ah\'i que lo deje reflejado
+\end{document}
