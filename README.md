@@ -1,2 +1,2 @@
 # Analisis-Latex
-Some laTex projects i had to do for my calculus classes
+Some laTex projects I had to do for my calculus classes
